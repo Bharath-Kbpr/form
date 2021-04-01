@@ -1,0 +1,169 @@
+    // const [input, setInput] = useState("");
+    // const [error, setError] = useState("");
+    // const handleChange = e => {
+    //     const match = new RegExp('^[A-z]{5,30}$');
+    //     const error = match.test(e.target.value);
+    //     if (e.target.value === null || e.target.value === "") {
+    //         setError("Please Enter the First Name");
+    //       }else
+    //     if (error === false) {
+    //         setError("Accepts Alphabets, space & Min 5 to Max 30 Char");
+    //     } else setError("");
+
+    //     setInput(e.target.value);
+    
+    // }
+
+
+//     const [input,setInput] = useState("");
+//     const [error,setError] = useState("");
+//     const handleChange = e =>{
+//         const match = new RegExp('^[0-9]{6}$');
+//         const error = match.test(e.target.value);
+//         if (e.target.value ===null || e.target.value===""){
+//             setError("Please enter Associate Id")
+//         }else
+//         if(error === false){
+//             setError("Invalid Associate Id")
+//         }else
+//         setError("")
+          
+//         setInput(e.target.value);
+//     }
+
+
+// const [input,setInput] = useState("");
+//     const [error,setError] = useState("");
+//     const handleChange = e => {
+//         const match = new RegExp('^[0-9A-z]{12}$');
+//         const error = match.test(e.target.value);
+//         if(e.target.value===null || e.target.value===""){
+//             setError(" Please enter the Project id");
+//         }
+//         else
+//         if(error===false){
+//           setError("Invalid Associate Id");
+//         }else
+//         setError("");
+//         setInput(e.target.value);
+//     }
+
+
+   const [shore, setShore] = useState("");
+    const [error, setError] = useState(false);
+    const onShore = ["vizag", "chennai", "hyderabad", "banglore"];
+    const offShore = ["USA","NON-USA"];
+    const handleSelect = e => {
+        setShore(e.target.value);
+        if(e.target.value===null || e.target.value===''){
+            setError("Please select the location")
+          }
+          else{
+            setError("");
+          }
+    };
+
+           <div className="row4">
+        <input type="radio" value="onshore" name="shore" onChange={handleSelect}/><label >onshore</label>
+        <input type="radio" value="offshore" name="shore" onChange={handleSelect}/><label >offshore</label><br />
+        {shore == "" && (
+            <select id="" name="" style={{width:'570px',padding:'10px'}}>
+            <option disabled selected value="">Please select</option>
+            </select>
+        )}
+        <label style={{color:"red"}}>{error}</label>
+        {shore === "onshore" && (
+            
+                    <select id="" name="" style={{width:'570px',padding:'10px'}}>
+                   
+                    <option disabled selected value="">Please select</option>
+
+                        {onShore.map((option, index) => {
+                            return <option key={index} value={option}>{option}</option>
+                            
+                        })}
+                    </select>
+                )}
+                {shore === "offshore" && (
+                <select id="" name="" style={{width:'570px',padding:'10px'}}>
+                <option disabled selected value="">Please select</option>
+                    {offShore.map((option, index) => {
+                        return <option key={index} value={option}>{option}</option>
+                    })}
+                </select>
+                )}
+        </div>
+    )
+}
+
+
+import {useState} from 'react'
+const Skills = () => {
+    const [arr,setArr] = useState([]);
+    const options = ["HTML,CSS3,JS","Angular 8","Express JS","SASS","React JS","Node JS","ES5,ES6,ES7...","Vue JS","Mango DB","Bootstrap 4","TypeScript"]
+    const handleChange = e => {
+        setArr([...arr, e.target.value]);
+
+    }
+    return (
+        <div className="row5">
+        {
+         options.map((option,index) => {
+             return (
+                 <div>
+                <input key={index} value={option} onChange={handleChange} type="checkbox"/>
+                <label >{option}</label>
+                <br />
+                </div>
+                
+             )
+         })
+        }
+            {
+               arr.length!=0 && arr.length<5 && <label style={{color:'red'}}> Please select Min 5 skills</label>
+            }
+        </div>
+    )
+}
+
+    const [input,setInput] = useState("");
+    const [error,setError] = useState("");
+    const handleChange = e =>{
+        
+    if(e.target.value===null || e.target.value===""){
+        console.log(e.target.value)
+        setError(" Please upload Profile Picture");
+        
+    }
+    else
+    setError("")
+   
+}
+    return (
+        <div className="row6">
+        <input onChange={handleChange} type="file" id="img" name="img" accept="image/*" />
+        <br />
+        <label >{error}</label>
+        </div>
+    )
+}
+
+const Comments = () => {
+    const [input,setInput] = useState("");
+    const [error,setError] = useState("");
+    const handleChange = e => {
+        if(e.target.value==null || e.target.value==""){
+            setError(" Please Enter Comments")
+        }
+        else
+        setError("")
+        setInput(e.target.value);
+    }
+    return (
+        <div className="row7">
+            <textarea placeholder='Comments' value={input} onChange={handleChange}></textarea>
+            <br />
+            <label>{error}</label>
+        </div>
+    )
+}
