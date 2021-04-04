@@ -9,6 +9,7 @@ const Form = props => {
                 type="text"
                 name="name"
                 placeholder="Associate Name"
+                required
             />
             <br />
             <input
@@ -16,6 +17,7 @@ const Form = props => {
                 type="text"
                 name="id"
                 placeholder="Associate Id"
+                required
             />
             {props.error && (
                 <>
@@ -29,15 +31,23 @@ const Form = props => {
                 type="text"
                 name="pid"
                 placeholder="Project ID"
+                required
             />
             <br />
-            <input className="row4" type="radio" value="onshore" name="shore" />
+            <input
+                required
+                className="row4"
+                type="radio"
+                value="onshore"
+                name="shore"
+            />
             <label>onshore</label>
             <input
                 className="row5"
                 type="radio"
                 value="offshore"
                 name="shore"
+                required
             />
             <label>offshore</label>
             <br />
@@ -71,6 +81,7 @@ const Form = props => {
                     color: "#ffffff",
                     margin: "0px 5px 0px 0px"
                 }}
+                onClick={actionCreator.onSubmit}
             >
                 Submit
             </button>
@@ -92,15 +103,12 @@ const Form = props => {
 };
 
 const mapStateToProps = state => {
-    return {
-        error: state.error
-    };
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleChange: e => dispatch(actionCreator.handleChange(e)),
-        handleSubmit: e => dispatch(actionCreator.handleSubmit(e))
+        onSubmit: e => dispatch(actionCreator.onSubmit())
     };
 };
 

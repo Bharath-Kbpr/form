@@ -1,13 +1,5 @@
-export const handleChange = e => {
+export const setSubmit = () => {
     return {
-        type: "CHANGE",
-        e
-    };
-};
-
-export const handleSubmit = e => {
-    return {
-        type: "SUBMIT",
-        e
+        type: "SUBMIT"
     };
 };
